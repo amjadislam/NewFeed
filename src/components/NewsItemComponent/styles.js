@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import {hp, wp} from '../../constants';
 
 export default StyleSheet.create({
