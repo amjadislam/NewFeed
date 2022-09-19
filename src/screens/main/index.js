@@ -1,13 +1,13 @@
 import React from 'react';
 import {SafeAreaView, View} from 'react-native';
-// import {NewsContainerComponent} from './../../components';
+import {NewsContainerComponent, SearchBarComponent} from '../../components';
 import styles from './styles';
-import NewsContainerComponent from "../../components/NewsContainerComponent";
 
 const MainScreen = () => {
   return (
     <View style={styles.mainContainerStyle}>
       <SafeAreaView>
+        <SearchBarComponent />
         <NewsContainerComponent />
       </SafeAreaView>
     </View>
