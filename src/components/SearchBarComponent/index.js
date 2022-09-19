@@ -5,7 +5,6 @@ import styles from './styles';
 import {useDispatch, useSelector} from 'react-redux';
 import {getTopNews, getNewsByQuery} from '../../store/actions';
 import _ from 'lodash';
-import {wp} from '../../constants';
 
 const SearchBarComponent = props => {
     const dispatch = useDispatch();
