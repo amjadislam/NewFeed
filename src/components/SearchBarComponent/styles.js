@@ -5,7 +5,7 @@ import Styles from '../../constants/Styles';
 export default StyleSheet.create({
   mainContainerStyle: {
     position: 'absolute',
-    top: hp('7%'),
+    top: Styles.listItemsOffset.height,
     zIndex: 1,
     alignSelf: 'center',
     flexDirection: 'row',
@@ -19,10 +19,5 @@ export default StyleSheet.create({
     height: hp('5%'),
     width: '75%',
     marginEnd: wp('3%'),
-  },
-  closeContainer: {
-    width: wp(5),
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });

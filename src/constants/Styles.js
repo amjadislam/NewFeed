@@ -1,4 +1,5 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
+import {hp} from './Dimensions';
 
 export default StyleSheet.create({
   shadowStyle: {
@@ -10,5 +11,15 @@ export default StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+  },
+  listItemsOffset: {
+    ...Platform.select({
+      android: {
+        height: hp('2%'),
+      },
+      ios: {
+        height: hp('7.5%'),
+      },
+    }),
   },
 });
