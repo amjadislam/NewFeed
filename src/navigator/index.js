@@ -2,7 +2,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 
-import {MainScreen} from '../screens';
+import DashboardTabs from './DashboardTabs';
 
 const Stack = createStackNavigator();
 
@@ -10,7 +10,7 @@ function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="MainScreen" component={MainScreen} />
+          <Stack.Screen name="DashboardTabs" component={DashboardTabs} />
       </Stack.Navigator>
     </NavigationContainer>
   );
