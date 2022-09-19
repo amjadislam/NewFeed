@@ -1,15 +1,15 @@
 import React, {useEffect, useState, useRef} from 'react';
 import {FlatList, View} from 'react-native';
+import {hp} from '../../constants';
 import NewsItemComponent from '../NewsItemComponent';
-import {useNavigation} from '@react-navigation/native';
 import BackToTopComponent from '../BackToTopComponent';
 import {getTopNews, getNewsByQuery} from '../../store/actions';
 import {useDispatch, useSelector} from 'react-redux';
-import {hp} from '../../constants';
 
-const NewsContainerComponent = () => {
-    const {navigate} = useNavigation();
+const NewsContainerComponent = props => {
     const dispatch = useDispatch();
+
+    const {searchText} = props;
 
     const {isLoading, errorMessage, newsList, currentPage, totalResults} =
         useSelector(state => state.reducer.news);
@@ -21,16 +21,22 @@ const NewsContainerComponent = () => {
 
     useEffect(() => {
         getNewsData(true);
-        if (isRefreshing) {
-            setTimeout(() => {
-                setIsRefreshing(() => false);
-            }, 3000);
-        }
-    }, [isRefreshing]);
+    }, []);
 
     const getNewsData = reset => {
-        let page = reset ? 1 : currentPage + 1;
-        dispatch(getTopNews({page}));
+        if (searchText === '') {
+            let page = reset ? 1 : currentPage + 1;
+            dispatch(getTopNews({page}));
+        } else {
+            dispatch(getNewsByQuery({query: searchText}));
+        }
+    };
+
+    const loadNextPage = () => {
+        if (!isLoading) {
+            let page = currentPage + 1;
+            dispatch(getTopNews({page}));
+        }
     };
 
     return (
@@ -39,18 +45,13 @@ const NewsContainerComponent = () => {
                 ref={refFlatList}
                 decelerationRate={'fast'}
                 progressViewOffset={hp('7.5%')}
-                refreshing={isRefreshing}
-                onRefresh={() => setIsRefreshing(() => true)}
+                refreshing={isLoading}
+                onRefresh={() => getNewsData(true)}
                 ListHeaderComponent={() => <View style={{height: hp('7.5%')}} />}
                 data={newsList}
-                renderItem={({item, index}) => (
-                    <NewsItemComponent
-                        news={item}
-                        onPressed={() => {
-                            navigate('NewsDetailsScreen');
-                        }}
-                    />
-                )}
+                onEndReachedThreshold={0.5}
+                onEndReached={loadNextPage}
+                renderItem={({item, index}) => <NewsItemComponent news={item} />}
                 onScroll={e => {
                     if (e.nativeEvent.contentOffset.y > 400) {
                         refBackToTop?.current?.show();

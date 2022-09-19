@@ -20,4 +20,9 @@ export default StyleSheet.create({
     width: '75%',
     marginEnd: wp('3%'),
   },
+  closeContainer: {
+    width: wp(5),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });

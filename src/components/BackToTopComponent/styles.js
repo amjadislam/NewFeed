@@ -9,7 +9,7 @@ export default StyleSheet.create({
     width: hp('5%'),
     borderRadius: 90,
     position: 'absolute',
-    bottom: hp('12%'),
+    bottom: hp('5%'),
     right: wp('10%'),
     alignItems: 'center',
     justifyContent: 'center',
