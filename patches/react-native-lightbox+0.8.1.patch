@@ -1,0 +1,51 @@
+diff --git a/node_modules/react-native-lightbox/LightboxOverlay.js b/node_modules/react-native-lightbox/LightboxOverlay.js
+index 9e01f9a..0b37b31 100644
+--- a/node_modules/react-native-lightbox/LightboxOverlay.js
++++ b/node_modules/react-native-lightbox/LightboxOverlay.js
+@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
+   closeButton: {
+     fontSize: 35,
+     color: 'white',
+-    lineHeight: 40,
+-    width: 40,
++    lineHeight: 130,
++    width: 55,
+     textAlign: 'center',
+     shadowOffset: {
+       width: 0,
+@@ -99,7 +99,7 @@ export default class LightboxOverlay extends Component {
+       onPanResponderMove: Animated.event([
+         null,
+         { dy: this.state.pan }
+-      ]),
++      ], {useNativeDriver: false}),
+       onPanResponderTerminationRequest: (evt, gestureState) => true,
+       onPanResponderRelease: (evt, gestureState) => {
+         if(Math.abs(gestureState.dy) > DRAG_DISMISS_THRESHOLD) {
+@@ -115,7 +115,7 @@ export default class LightboxOverlay extends Component {
+         } else {
+           Animated.spring(
+             this.state.pan,
+-            { toValue: 0, ...this.props.springConfig }
++            { toValue: 0, ...this.props.springConfig, useNativeDriver: false}
+           ).start(() => { this.setState({ isPanning: false }); });
+         }
+       },
+@@ -144,7 +144,7 @@ export default class LightboxOverlay extends Component {
+ 
+     Animated.spring(
+       this.state.openVal,
+-      { toValue: 1, ...this.props.springConfig }
++      { toValue: 1, ...this.props.springConfig, useNativeDriver: false }
+     ).start(() => {
+       this.setState({ isAnimating: false });
+       this.props.didOpen();
+@@ -161,7 +161,7 @@ export default class LightboxOverlay extends Component {
+     });
+     Animated.spring(
+       this.state.openVal,
+-      { toValue: 0, ...this.props.springConfig }
++      { toValue: 0, ...this.props.springConfig, useNativeDriver: false }
+     ).start(() => {
+       this.setState({
+         isAnimating: false,
