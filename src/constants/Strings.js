@@ -10,6 +10,12 @@ export const Strings = {
       'Aenean hendrerit a arcu nec placerat. Pellentesque vehicula diam et risus interdum, quis congue metus rhoncus. Vivamus vehicula tristique lorem, at semper nulla elementum a. Nulla facilisi. Sed euismod cursus bibendum. Sed auctor sodales tortor sed ullamcorper. Fusce et odio porttitor, congue libero sit amet, fermentum nulla. Nullam id nunc sodales, egestas purus non, euismod velit. Fusce scelerisque nisi sit amet porta placerat. Nullam eget arcu a magna dapibus luctus. Nam vitae odio ac lorem efficitur convallis.\n' +
       '\n' +
       'Pellentesque molestie interdum felis, sit amet maximus nisi blandit a. Suspendisse dapibus mi arcu, eget porttitor ligula elementum faucibus. Cras in accumsan nisi, quis scelerisque dolor. Aenean et mattis erat. Vestibulum suscipit gravida tortor, sed lobortis nisi dictum quis. Aliquam hendrerit, ligula eget pretium cursus, nulla eros luctus dolor, ut tincidunt eros urna sit amet ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec elementum pharetra metus congue consectetur. Nullam sapien felis, cursus ut quam id, aliquet tempor arcu. Integer vel iaculis leo. Vivamus condimentum magna fermentum quam aliquam posuere ac sed metus. Aenean tempor aliquam ipsum vitae sodales. Etiam porta pretium mauris, mattis dignissim odio accumsan eget. Pellentesque ultricies venenatis nulla. Cras pulvinar bibendum faucibus.',
+  languagesInfoText:
+      'You can choose the language and customise your application in the' +
+      ' language you want',
+  languages: 'Languages',
+  german: 'German',
+  english: 'English',
 };
 
 export default Strings;

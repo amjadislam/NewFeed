@@ -9,6 +9,7 @@ export default {
     default: '#000',
     lightBlack: 'rgba(0,0,0,0.8)',
     reallyTransBlack: 'rgba(0,0,0,0.3)',
+    dialogBlack: 'rgb(101,101,101)',
     textColor: '#151515',
   },
   LIGHT_BLUE: {

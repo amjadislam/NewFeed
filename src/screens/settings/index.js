@@ -1,13 +1,14 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {Pressable, SafeAreaView, Text, View, Alert, Switch} from 'react-native';
 import styles from './styles';
-import Styles from '../../constants/Styles';
 import {IC_NEXT_ARROW} from '../../assets/svg';
 import {Colors} from '../../constants';
 import {useDispatch, useSelector} from 'react-redux';
 import {enableDarkMode} from '../../store/actions';
+import {SelectLanguageModal} from '../../components';
 
 const SettingsScreen = () => {
+    const refLanguageModal = useRef(null);
     const {darkModeEnabled, selectedLanguage} = useSelector(
         state => state.reducer.settings,
     );
@@ -18,7 +19,7 @@ const SettingsScreen = () => {
                 <>
                     <Text style={styles.titleTextStyle(darkModeEnabled)}>Settings</Text>
                     <Pressable
-                        onPress={() => Alert.alert('Under Development!')}
+                        onPress={() => refLanguageModal?.current?.show()}
                         style={styles.menuItemStyle}>
                         <View>
                             <Text style={styles.menuItemTitleTextStyle(darkModeEnabled)}>
@@ -50,6 +51,7 @@ const SettingsScreen = () => {
                             }
                         />
                     </View>
+                    <SelectLanguageModal ref={refLanguageModal} />
                 </>
             </SafeAreaView>
         </View>
