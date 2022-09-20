@@ -29,8 +29,18 @@ const NewsDetailsScreen = ({
                     </Lightbox>
                     <BackButtonComponent onPressed={() => goBack()} />
                     <View style={styles.authorDetailsContainerStyle}>
-                        <Text style={styles.authorTextStyle}>By: John Wick</Text>
-                        <Text style={styles.authorTextStyle}>20-Sep-2022</Text>
+                        <View style={{alignItems: 'flex-start'}}>
+                            <Text style={styles.authorTextStyle}>
+                                {Strings.getString('author')}:
+                            </Text>
+                            <Text style={styles.authorTextStyle}>John Wick</Text>
+                        </View>
+                        <View style={{alignItems: 'flex-end'}}>
+                            <Text style={styles.authorTextStyle}>
+                                {Strings.getString('publishedOn')}
+                            </Text>
+                            <Text style={styles.authorTextStyle}>20-09-2022</Text>
+                        </View>
                     </View>
                 </View>
             </View>
@@ -46,7 +56,9 @@ const NewsDetailsScreen = ({
                     <Text style={styles.titleTextStyle(darkModeEnabled)}>
                         Clicking on a heading should open a detailed screen.
                     </Text>
-                    <Text style={styles.detailsTextStyle(darkModeEnabled)}>{Strings.dummyText}</Text>
+                    <Text style={styles.detailsTextStyle(darkModeEnabled)}>
+                        {Strings.getString('dummyText')}
+                    </Text>
                 </ScrollView>
             </SafeAreaView>
         </View>

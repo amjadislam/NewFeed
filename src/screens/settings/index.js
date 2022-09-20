@@ -2,7 +2,7 @@ import React, {useRef} from 'react';
 import {Pressable, SafeAreaView, Text, View, Alert, Switch} from 'react-native';
 import styles from './styles';
 import {IC_NEXT_ARROW} from '../../assets/svg';
-import {Colors} from '../../constants';
+import {Colors, Strings} from '../../constants';
 import {useDispatch, useSelector} from 'react-redux';
 import {enableDarkMode} from '../../store/actions';
 import {SelectLanguageModal} from '../../components';
@@ -17,16 +17,20 @@ const SettingsScreen = () => {
         <View style={styles.mainContainerStyle(darkModeEnabled)}>
             <SafeAreaView>
                 <>
-                    <Text style={styles.titleTextStyle(darkModeEnabled)}>Settings</Text>
+                    <Text style={styles.titleTextStyle(darkModeEnabled)}>
+                        {Strings.getString('settings')}
+                    </Text>
                     <Pressable
                         onPress={() => refLanguageModal?.current?.show()}
                         style={styles.menuItemStyle}>
                         <View>
                             <Text style={styles.menuItemTitleTextStyle(darkModeEnabled)}>
-                                Change Language
+                                {Strings.getString('changeLanguage')}
                             </Text>
                             <Text style={styles.menuItemSubtitleTextStyle(darkModeEnabled)}>
-                                {selectedLanguage}
+                                {selectedLanguage === 'en'
+                                    ? Strings.getString('english')
+                                    : Strings.getString('german')}
                             </Text>
                         </View>
                         <IC_NEXT_ARROW
@@ -37,7 +41,7 @@ const SettingsScreen = () => {
                     </Pressable>
                     <View style={styles.menuItemStyle}>
                         <Text style={styles.menuItemTitleTextStyle(darkModeEnabled)}>
-                            Dark Mode
+                            {Strings.getString('darkMode')}
                         </Text>
                         <Switch
                             trackColor={{

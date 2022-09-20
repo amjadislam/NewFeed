@@ -4,7 +4,7 @@ import {
   combineReducers,
   legacy_createStore as createStore,
 } from 'redux';
-import {persistStore, persistReducer} from 'redux-persist';
+import {persistStore} from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
 import applyAppStateListener from 'redux-enhancer-react-native-appstate';
 import {

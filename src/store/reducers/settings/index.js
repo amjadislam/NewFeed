@@ -2,7 +2,7 @@ import {ENABLE_DARK_MODE, UPDATE_APP_LANGUAGE} from '../../actions/types';
 
 const initialState = {
   darkModeEnabled: false,
-  selectedLanguage: 'English',
+  selectedLanguage: 'en',
 };
 const settingsReducer = (state = initialState, action) => {
   switch (action.type) {

@@ -5,7 +5,7 @@ import styles from './styles';
 import {useDispatch, useSelector} from 'react-redux';
 import {getTopNews, getNewsByQuery} from '../../store/actions';
 import _ from 'lodash';
-import {Colors} from '../../constants';
+import {Colors, Strings} from '../../constants';
 
 const SearchBarComponent = props => {
     const {darkModeEnabled} = useSelector(state => state.reducer.settings);
@@ -54,6 +54,10 @@ const SearchBarComponent = props => {
             <TextInput
                 style={styles.searchFieldStyle(darkModeEnabled)}
                 value={query}
+                placeholder={Strings.getString('search') + '...'}
+                placeholderTextColor={
+                    darkModeEnabled ? Colors.WHITE.default : Colors.BLACK.default
+                }
                 onChangeText={onChangeText}
             />
             <View style={styles.closeContainer}>

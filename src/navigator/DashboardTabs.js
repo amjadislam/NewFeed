@@ -1,14 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {MainScreen, SettingsScreen} from '../screens';
 import {IC_NEWSPAPER, IC_SETTINGS} from '../assets/svg';
-import {Colors} from '../constants';
+import {Colors, Strings} from '../constants';
 import {useSelector} from 'react-redux';
 
 const Tab = createBottomTabNavigator();
 
 const DashboardTabs = () => {
-    const {darkModeEnabled} = useSelector(state => state.reducer.settings);
+    const {darkModeEnabled, selectedLanguage} = useSelector(
+        state => state.reducer.settings,
+    );
+    useEffect(() => {
+        Strings.setLanguage(selectedLanguage);
+    }, []);
+
     return (
         <>
             <Tab.Navigator
