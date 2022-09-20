@@ -12,29 +12,59 @@ const SettingsScreen = () => {
         state => state.reducer.settings,
     );
     const dispatch = useDispatch();
-    // const [darkModeEnabled, setDarkModeEnabled] = useState(false);
     return (
-        <View style={styles.mainContainerStyle}>
+        <View
+            style={{
+                ...styles.mainContainerStyle,
+                ...(darkModeEnabled && {backgroundColor: Colors.BLACK.lightBlack}),
+            }}>
             <SafeAreaView>
                 <View style={{}}>
-                    <Text style={styles.titleTextStyle}>Settings</Text>
+                    <Text
+                        style={{
+                            ...styles.titleTextStyle,
+                            ...(darkModeEnabled && {color: Colors.WHITE.default}),
+                        }}>
+                        Settings
+                    </Text>
                     <Pressable
                         onPress={() => Alert.alert('Under Development!')}
                         style={styles.menuItemStyle}>
                         <View>
-                            <Text style={{...Styles.headingTextStyle}}>Change Language</Text>
-                            <Text style={styles.selectedLanguageStyle}>
+                            <Text
+                                style={{
+                                    ...Styles.headingTextStyle,
+                                    ...(darkModeEnabled && {color: Colors.WHITE.default}),
+                                }}>
+                                Change Language
+                            </Text>
+                            <Text
+                                style={{
+                                    ...styles.selectedLanguageStyle,
+                                    ...(darkModeEnabled && {color: Colors.WHITE.default}),
+                                }}>
                                 {selectedLanguage}
                             </Text>
                         </View>
-                        <IC_NEXT_ARROW fill={'black'} />
+                        <IC_NEXT_ARROW
+                            fill={
+                                darkModeEnabled ? Colors.WHITE.default : Colors.BLACK.lightBlack
+                            }
+                        />
                     </Pressable>
                     <View style={styles.menuItemStyle}>
-                        <Text style={{...Styles.headingTextStyle}}>Dark Mode</Text>
+                        <Text
+                            style={{
+                                ...Styles.headingTextStyle,
+                                ...(darkModeEnabled && {color: Colors.WHITE.default}),
+                            }}>
+                            Dark Mode
+                        </Text>
                         <Switch
                             trackColor={{
                                 true: Colors.LIGHT_BLUE.default,
                             }}
+                            thumbColor={darkModeEnabled ? 'white' : Colors.LIGHT_BLUE.default}
                             value={darkModeEnabled}
                             onValueChange={value => {
                                 dispatch(enableDarkMode({darkMode: value}));
