@@ -22,4 +22,18 @@ export default StyleSheet.create({
       },
     }),
   },
+  largeHeadingTextStyle: {
+    fontSize: hp('3%'),
+    fontWeight: '500',
+    color: '#151515',
+  },
+  headingTextStyle: {
+    fontSize: hp('2%'),
+    fontWeight: '500',
+    color: '#151515',
+  },
+  detailsTextStyle: {
+    fontSize: hp('1.8%'),
+    color: '#151515',
+  },
 });

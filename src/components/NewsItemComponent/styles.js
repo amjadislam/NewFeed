@@ -22,5 +22,4 @@ export default StyleSheet.create({
     alignSelf: 'flex-start',
     marginTop: hp('0.5%'),
   },
-  headingTextStyle: {fontSize: hp('2%'), fontWeight: '500', color: '#151515'},
 });
