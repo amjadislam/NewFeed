@@ -1,5 +1,6 @@
 import {Platform, StyleSheet} from 'react-native';
 import {hp} from './Dimensions';
+import {Colors} from './index';
 
 export default StyleSheet.create({
   shadowStyle: {
@@ -25,15 +26,15 @@ export default StyleSheet.create({
   largeHeadingTextStyle: {
     fontSize: hp('3%'),
     fontWeight: '500',
-    color: '#151515',
+    color: Colors.BLACK.textColor,
   },
   headingTextStyle: {
     fontSize: hp('2%'),
     fontWeight: '500',
-    color: '#151515',
+    color: Colors.BLACK.textColor,
   },
   detailsTextStyle: {
     fontSize: hp('1.8%'),
-    color: '#151515',
+    color: Colors.BLACK.textColor,
   },
 });

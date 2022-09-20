@@ -17,6 +17,7 @@ const DashboardTabs = () => {
                         backgroundColor: darkModeEnabled
                             ? Colors.BLACK.lightBlack
                             : Colors.WHITE.default,
+                        ...(darkModeEnabled && {elevation: 0}),
                     },
                     tabBarActiveTintColor: Colors.LIGHT_BLUE.default,
                     tabBarInactiveTintColor: 'rgba(190,191,191,1)',
@@ -39,7 +40,8 @@ const DashboardTabs = () => {
                             );
                         }
                     },
-                    tabBarShowLabel: true,
+                    tabBarHideOnKeyboard: true,
+                    tabBarShowLabel: false,
                     headerShown: false,
                 })}>
                 <Tab.Screen name="News" component={MainScreen} />

@@ -1,5 +1,6 @@
 import {Platform, StyleSheet} from 'react-native';
-import {hp, wp} from '../../constants';
+import {Colors, hp, wp} from '../../constants';
+import Styles from "../../constants/Styles";
 
 export default StyleSheet.create({
   mainContainerStyle: {
@@ -14,6 +15,12 @@ export default StyleSheet.create({
     height: hp('24%'),
     borderRadius: 4,
     overflow: 'hidden',
+  },
+  titleTextStyle: darkModeEnabled => {
+    return {
+      ...Styles.headingTextStyle,
+      ...(darkModeEnabled && {color: Colors.WHITE.lightWhite}),
+    };
   },
   coverImageStyle: {height: '100%', width: '100%'},
   headingContainerStyle: {

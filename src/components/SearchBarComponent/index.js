@@ -5,13 +5,14 @@ import styles from './styles';
 import {useDispatch, useSelector} from 'react-redux';
 import {getTopNews, getNewsByQuery} from '../../store/actions';
 import _ from 'lodash';
+import {Colors} from '../../constants';
 
 const SearchBarComponent = props => {
+    const {darkModeEnabled} = useSelector(state => state.reducer.settings);
     const dispatch = useDispatch();
     const {onSearchChange} = props;
 
-    const {isLoading, errorMessage, newsList, currentPage, totalResults} =
-        useSelector(state => state.reducer.news);
+    const {isLoading} = useSelector(state => state.reducer.news);
     const [query, setQuery] = useState('');
     const refQuery = useRef('');
 
@@ -31,6 +32,7 @@ const SearchBarComponent = props => {
         dispatch(getTopNews({page: 1}));
     };
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const handler = useCallback(
         _.debounce(() => {
             if (refQuery.current == '') {
@@ -43,12 +45,14 @@ const SearchBarComponent = props => {
     );
 
     return (
-        <View style={styles.mainContainerStyle}>
+        <View style={styles.mainContainerStyle(darkModeEnabled)}>
             <View style={styles.searchIconContainerStyle}>
-                <IC_SEARCH fill={'black'} />
+                <IC_SEARCH
+                    fill={darkModeEnabled ? Colors.WHITE.default : Colors.BLACK.default}
+                />
             </View>
             <TextInput
-                style={styles.searchFieldStyle}
+                style={styles.searchFieldStyle(darkModeEnabled)}
                 value={query}
                 onChangeText={onChangeText}
             />
@@ -60,7 +64,11 @@ const SearchBarComponent = props => {
                         disabled={query.length < 1}
                         style={{opacity: query.length > 0 ? 1 : 0}}
                         onPress={clearSearch}>
-                        <IC_CROSS />
+                        <IC_CROSS
+                            fill={
+                                darkModeEnabled ? Colors.WHITE.default : Colors.BLACK.default
+                            }
+                        />
                     </Pressable>
                 )}
             </View>

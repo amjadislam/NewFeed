@@ -6,6 +6,7 @@ import {Strings} from '../../constants';
 import {BackButtonComponent} from '../../components';
 import {BG_DUMMY_IMAGE} from '../../assets/images';
 import Lightbox from 'react-native-lightbox';
+import {useSelector} from 'react-redux';
 
 const NewsDetailsScreen = ({
                                route: {
@@ -13,6 +14,7 @@ const NewsDetailsScreen = ({
                                },
                            }) => {
     const {goBack} = useNavigation();
+    const {darkModeEnabled} = useSelector(state => state.reducer.settings);
 
     function _renderHeaderLayout() {
         return (
@@ -36,15 +38,15 @@ const NewsDetailsScreen = ({
     }
 
     return (
-        <View style={styles.mainContainerStyle}>
+        <View style={styles.mainContainerStyle(darkModeEnabled)}>
             <SafeAreaView>
                 {_renderHeaderLayout()}
 
                 <ScrollView style={styles.scrollContainerStyle}>
-                    <Text style={styles.titleTextStyle}>
+                    <Text style={styles.titleTextStyle(darkModeEnabled)}>
                         Clicking on a heading should open a detailed screen.
                     </Text>
-                    <Text style={styles.detailsTextStyle}>{Strings.dummyText}</Text>
+                    <Text style={styles.detailsTextStyle(darkModeEnabled)}>{Strings.dummyText}</Text>
                 </ScrollView>
             </SafeAreaView>
         </View>

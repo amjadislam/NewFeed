@@ -41,6 +41,7 @@ const SettingsScreen = () => {
                         <Switch
                             trackColor={{
                                 true: Colors.LIGHT_BLUE.default,
+                                false: Colors.BLACK.reallyTransBlack,
                             }}
                             thumbColor={darkModeEnabled ? 'white' : Colors.LIGHT_BLUE.default}
                             value={darkModeEnabled}

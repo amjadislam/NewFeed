@@ -1,11 +1,11 @@
 import React, {useEffect, useState, useRef} from 'react';
-import {FlatList, View} from 'react-native';
+import {FlatList, View, RefreshControl} from 'react-native';
 import NewsItemComponent from '../NewsItemComponent';
 import {useNavigation} from '@react-navigation/native';
 import BackToTopComponent from '../BackToTopComponent';
 import {getTopNews, getNewsByQuery} from '../../store/actions';
 import {useDispatch, useSelector} from 'react-redux';
-import {hp} from '../../constants';
+import {Colors, hp} from '../../constants';
 
 const NewsContainerComponent = props => {
     const {navigate} = useNavigation();
@@ -46,11 +46,17 @@ const NewsContainerComponent = props => {
                 ref={refFlatList}
                 decelerationRate={'fast'}
                 progressViewOffset={hp('7.5%')}
-                refreshing={isLoading}
-                onRefresh={() => getNewsData(true)}
+                refreshControl={
+                    <RefreshControl
+                        refreshing={isLoading}
+                        onRefresh={() => getNewsData(true)}
+                        title=""
+                        tintColor={Colors.LIGHT_BLUE.default}
+                    />
+                }
                 ListHeaderComponent={() => <View style={{height: hp('7.5%')}} />}
                 // data={newsList}
-                data={[1,2,3,4,5,6]}
+                data={[1, 2, 3, 4, 5, 6]}
                 onEndReachedThreshold={0.5}
                 onEndReached={loadNextPage}
                 renderItem={({item, index}) => (
