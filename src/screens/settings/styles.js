@@ -1,9 +1,8 @@
 import {StyleSheet} from 'react-native';
-import {hp, wp} from '../../constants';
+import {Colors, hp, wp} from '../../constants';
 import Styles from '../../constants/Styles';
 
 export default StyleSheet.create({
-  mainContainerStyle: {backgroundColor: '#FFFFFF', flex: 1},
   menuItemStyle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -12,10 +11,31 @@ export default StyleSheet.create({
     marginHorizontal: wp('2.5'),
     alignItems: 'center',
   },
-  titleTextStyle: {
-    ...Styles.largeHeadingTextStyle,
-    alignSelf: 'center',
-    marginVertical: hp('2%'),
+  mainContainerStyle: darkModeEnabled => {
+    return {
+      backgroundColor: darkModeEnabled ? Colors.BLACK.lightBlack : '#FFFFFF',
+      flex: 1,
+    };
   },
-  selectedLanguageStyle: {...Styles.detailsTextStyle, marginTop: hp('0.8%')},
+  menuItemTitleTextStyle: darkModeEnabled => {
+    return {
+      ...Styles.headingTextStyle,
+      color: darkModeEnabled ? Colors.WHITE.default : Colors.BLACK.default,
+    };
+  },
+  menuItemSubtitleTextStyle: darkModeEnabled => {
+    return {
+      ...Styles.detailsTextStyle,
+      marginTop: hp('0.8%'),
+      color: darkModeEnabled ? Colors.WHITE.default : Colors.BLACK.default,
+    };
+  },
+  titleTextStyle: darkModeEnabled => {
+    return {
+      ...Styles.largeHeadingTextStyle,
+      alignSelf: 'center',
+      marginVertical: hp('2%'),
+      color: darkModeEnabled ? Colors.WHITE.default : Colors.BLACK.default,
+    };
+  },
 });

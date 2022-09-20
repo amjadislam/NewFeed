@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Pressable, SafeAreaView, Text, View, Alert, Switch} from 'react-native';
 import styles from './styles';
 import Styles from '../../constants/Styles';
@@ -13,36 +13,18 @@ const SettingsScreen = () => {
     );
     const dispatch = useDispatch();
     return (
-        <View
-            style={{
-                ...styles.mainContainerStyle,
-                ...(darkModeEnabled && {backgroundColor: Colors.BLACK.lightBlack}),
-            }}>
+        <View style={styles.mainContainerStyle(darkModeEnabled)}>
             <SafeAreaView>
-                <View style={{}}>
-                    <Text
-                        style={{
-                            ...styles.titleTextStyle,
-                            ...(darkModeEnabled && {color: Colors.WHITE.default}),
-                        }}>
-                        Settings
-                    </Text>
+                <>
+                    <Text style={styles.titleTextStyle(darkModeEnabled)}>Settings</Text>
                     <Pressable
                         onPress={() => Alert.alert('Under Development!')}
                         style={styles.menuItemStyle}>
                         <View>
-                            <Text
-                                style={{
-                                    ...Styles.headingTextStyle,
-                                    ...(darkModeEnabled && {color: Colors.WHITE.default}),
-                                }}>
+                            <Text style={styles.menuItemTitleTextStyle(darkModeEnabled)}>
                                 Change Language
                             </Text>
-                            <Text
-                                style={{
-                                    ...styles.selectedLanguageStyle,
-                                    ...(darkModeEnabled && {color: Colors.WHITE.default}),
-                                }}>
+                            <Text style={styles.menuItemSubtitleTextStyle(darkModeEnabled)}>
                                 {selectedLanguage}
                             </Text>
                         </View>
@@ -53,11 +35,7 @@ const SettingsScreen = () => {
                         />
                     </Pressable>
                     <View style={styles.menuItemStyle}>
-                        <Text
-                            style={{
-                                ...Styles.headingTextStyle,
-                                ...(darkModeEnabled && {color: Colors.WHITE.default}),
-                            }}>
+                        <Text style={styles.menuItemTitleTextStyle(darkModeEnabled)}>
                             Dark Mode
                         </Text>
                         <Switch
@@ -66,12 +44,12 @@ const SettingsScreen = () => {
                             }}
                             thumbColor={darkModeEnabled ? 'white' : Colors.LIGHT_BLUE.default}
                             value={darkModeEnabled}
-                            onValueChange={value => {
-                                dispatch(enableDarkMode({darkMode: value}));
-                            }}
+                            onValueChange={value =>
+                                dispatch(enableDarkMode({darkMode: value}))
+                            }
                         />
                     </View>
-                </View>
+                </>
             </SafeAreaView>
         </View>
     );

@@ -3,14 +3,21 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {MainScreen, SettingsScreen} from '../screens';
 import {IC_NEWSPAPER, IC_SETTINGS} from '../assets/svg';
 import {Colors} from '../constants';
+import {useSelector} from 'react-redux';
 
 const Tab = createBottomTabNavigator();
 
 const DashboardTabs = () => {
+    const {darkModeEnabled} = useSelector(state => state.reducer.settings);
     return (
         <>
             <Tab.Navigator
                 screenOptions={({route}) => ({
+                    tabBarStyle: {
+                        backgroundColor: darkModeEnabled
+                            ? Colors.BLACK.lightBlack
+                            : Colors.WHITE.default,
+                    },
                     tabBarActiveTintColor: Colors.LIGHT_BLUE.default,
                     tabBarInactiveTintColor: 'rgba(190,191,191,1)',
                     tabBarIcon: ({focused}) => {
