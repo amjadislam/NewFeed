@@ -40,6 +40,13 @@ export default StyleSheet.create({
       paddingTop: hp('1%'),
     };
   },
+  descriptionTextStyle: darkModeEnabled => {
+    return {
+      ...Styles.headingTextStyle,
+      ...(darkModeEnabled && {color: Colors.WHITE.lightWhite}),
+      paddingTop: hp('1%'),
+    };
+  },
   detailsTextStyle: darkModeEnabled => {
     return {
       ...Styles.detailsTextStyle,

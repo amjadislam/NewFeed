@@ -6,8 +6,8 @@ export default StyleSheet.create({
   mainContainerStyle: darkModeEnabled => {
     return {
       backgroundColor: darkModeEnabled
-          ? Colors.BLACK.lightBlack
-          : Colors.WHITE.default,
+        ? Colors.BLACK.lightBlack
+        : Colors.WHITE.default,
       height: hp('5%'),
       width: hp('5%'),
       borderRadius: 90,

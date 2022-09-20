@@ -6,8 +6,8 @@ export default StyleSheet.create({
   backButtonStyle: darkModeEnabled => {
     return {
       backgroundColor: darkModeEnabled
-          ? Colors.BLACK.lightBlack
-          : Colors.WHITE.default,
+        ? Colors.BLACK.lightBlack
+        : Colors.WHITE.default,
       alignSelf: 'baseline',
       borderRadius: 90,
       position: 'absolute',

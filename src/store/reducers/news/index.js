@@ -43,14 +43,14 @@ const newsReducer = (state = initialState, action) => {
         ...state,
         errorMessage: '',
         isLoading: true,
-        currentPage: action.payload.page,
-        newsList: action.payload.page == 1 ? [] : state.newsList,
+        currentPage: 0,
+        newsList: [],
       };
     case GET_NEWS_BY_QUERY_SUCCESS:
       return {
         ...state,
         isLoading: false,
-        newsList: [...state.newsList, ...action.data.articles],
+        newsList: action.data.articles,
         totalResults: action.data.totalResults,
       };
     case GET_NEWS_BY_QUERY_FAILURE:
